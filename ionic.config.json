@@ -1,0 +1,7 @@
+{
+  "name": "Bezmoo App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
