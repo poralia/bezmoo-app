@@ -1,5 +1,6 @@
 import { ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
 import { AuthActions } from '../actions/auth.actions';
+import { CustomerActions } from 'src/app/modules/customer/state/actions/customer.actions';
 import { ILogin, IRegister, IUser } from '../../interfaces';
 import { Statuses } from 'src/app/modules/shared/enum';
 
@@ -151,39 +152,39 @@ export const AuthReducer = createReducer(
     }
   }),
 
-  // // ...
-  // // Update queue for this user
-  // // ...
-  // on(SalesActions.createQueueSuccess, (state: any, action) => {
-  //   const { data } = action.data;
+  // ...
+  // Update queue for this user
+  // ...
+  on(CustomerActions.createQueueSuccess, (state: any, action) => {
+    const { data } = action.data;
 
-  //   return {
-  //     ...state,
-  //     user: {
-  //       ...state.user,
-  //       data: {
-  //         ...state.user.data,
-  //         queue: data,
-  //       },
-  //     }
-  //   }
-  // }),
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        data: {
+          ...state.user.data,
+          queue: data,
+        },
+      }
+    }
+  }),
 
-  // // ...
-  // // Delete queue for this user
-  // // ...
-  // on(SalesActions.deleteQueueSuccess, (state: any, action) => {
-  //   return {
-  //     ...state,
-  //     user: {
-  //       ...state.user,
-  //       data: {
-  //         ...state.user.data,
-  //         queue: null,
-  //       },
-  //     }
-  //   }
-  // }),
+  // ...
+  // Delete queue for this user
+  // ...
+  on(CustomerActions.deleteQueueSuccess, (state: any, action) => {
+    return {
+      ...state,
+      user: {
+        ...state.user,
+        data: {
+          ...state.user.data,
+          queue: null,
+        },
+      }
+    }
+  }),
 
 );
 

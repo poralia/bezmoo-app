@@ -1,15 +1,26 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title>Akun Saya</ion-title>
+    <ion-buttons slot="end" class="ion-margin-end">
+      <ion-button color="danger" mode="ios" fill="clear" (click)="onLogoutHandler()">Logout</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="customer$ | async as customer">
+    <div class="px-1">
+      <table *ngIf="customer?.data?.name" class="table">
+        <tr>
+          <td class="w-32">Nama</td>
+          <td>{{ customer?.data?.full_name }}</td>
+        </tr>
+
+        <tr>
+          <td class="w-32">Email</td>
+          <td>{{ customer?.data?.email }}</td>
+        </tr>
+      </table>
+    </div>
+  </ng-container>
 </ion-content>

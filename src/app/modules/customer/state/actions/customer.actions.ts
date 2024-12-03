@@ -35,5 +35,13 @@ export const CustomerActions = createActionGroup({
     'Delete Queue': props<{ payload: { name: string } }>(),
     'Delete Queue Success': props<{ data: any }>(),
     'Delete Queue Failure': props<{ error: HttpErrorResponse }>(),
+
+    'Load Profile': props<{ payload: { filters: any[], fields: string[] } }>(),
+    'Load Profile Success': props<{ data: any, filters: any }>(),
+    'Load Profile Failure': props<{ error: unknown, filters: any }>(),
+
+    'Load Company': props<{ payload: { filters: any[], fields: string[] } }>(),
+    'Load Company Success': props<{ data: any, filters: any }>(),
+    'Load Company Failure': props<{ error: unknown, filters: any }>(),
   }
 });

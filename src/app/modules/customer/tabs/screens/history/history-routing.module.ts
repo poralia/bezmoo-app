@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HistoryPage } from './history.page';
+import { OrderDetailScreenComponent } from './childs/order-detail-screen/order-detail-screen.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HistoryPage,
+    children: [
+      {
+        path: '',
+        component: HistoryPage,
+      },
+      {
+        path: ':id',
+        component: OrderDetailScreenComponent,
+      }
+    ]
   }
 ];
 
